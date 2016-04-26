@@ -2,13 +2,15 @@ require 'test_helper'
 
 class ToDoListTest < ActionDispatch::IntegrationTest
   def test_user_can_create_to_do_list_item
-    user = User.create(:name => 'Dongmin', :uid => 'test123')
     page.visit items_path
-    assert page.has_content?('Create New To-Do Item')
-    page.click_link('Create New To-Do Item')
+
+    assert page.has_content?('Your To Do List')
+
     assert page.has_button?('Just Do It')
     fill_in("item_body", :with => 'My great task')
+    fill_in("item_date", :with => '03/04/1985')
     page.click_button('Just Do It')
+
     assert page.has_content?('My great task')
   end
 

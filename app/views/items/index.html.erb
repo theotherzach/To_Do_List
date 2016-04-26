@@ -1,0 +1,14 @@
+<h3>Add an Item to your To Do list</h3>
+<%= form_for(@item) do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+  <%= f.submit "Just Do It" %>
+<% end %>
+
+<h3>Your To Do List</h3>
+<% @items.each do |item| %>
+  <%= link_to item.date, item_path(item) %>
+  <%= item.body %>
+<% end %>
