@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
-  get "/auth/twitter",    to: "sessions#create", as: "login"
-  get "/auth/twitter/callback",  to: "sessions#create"
+  get "/auth/twitter",    to: "session#create", as: "login"
+  get "/auth/twitter/callback",  to: "session#create"
   get '/items',           to: 'items#index',  as: 'items'
   get  '/items/new',      to: 'items#new',    as: "new_item"
   post '/items',          to: 'items#create'
