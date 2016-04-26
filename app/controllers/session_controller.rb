@@ -5,7 +5,7 @@ class SessionController < ApplicationController
       uid:  env['omniauth.auth']['uid'],
     )
     session[:user_id] = user.id
-    redirect_to root_path
+    redirect_to items_path
   end
 
   def destroy

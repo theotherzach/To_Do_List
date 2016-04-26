@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
     @item = Item.new
+    @items = current_user.items
   end
 
   def create
-    @item = Item.create(date: params[:item][:date], body: params[:item][:body])
+    @item = current_user.items.create(date: params[:item][:date], body: params[:item][:body])
     redirect_to items_path
   end
 
@@ -23,5 +23,9 @@ class ItemsController < ApplicationController
     @item = Item.find_by(params[:id])
     @item.destroy
     redirect_to root_path
+  end
+
+  def show
+    @item = Item.find_by(params[:id])
   end
 end

@@ -1,6 +1,11 @@
-<%= @item.date %>
-<br>
-<%= @item.body %>
-<br>
+<h3>Add an Item to your To Do list</h3>
+<%= form_for(@item) do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+  <%= f.submit "Just Do It" %>
+<% end %>
+
 <%= link_to "Edit", edit_item_path %>
 <%= link_to "Delete", method: :destroy  %>
