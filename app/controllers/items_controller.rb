@@ -1,18 +1,12 @@
 class ItemsController < ApplicationController
   def index
-    @item = Item.all
-  end
-
-  def new
+    @items = Item.all
     @item = Item.new
   end
 
-  def show
-    @item = Item.find_by(params[:id])
-  end
-
   def create
-    @item = Item.create(:date, :body)
+    @item = Item.create(date: params[:item][:date], body: params[:item][:body])
+    redirect_to items_path
   end
 
   def edit
