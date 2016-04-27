@@ -1,0 +1,8 @@
+<h3>Edit your To Do item</h3>
+<%= form_for(@item) do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+  <%= f.submit "Edit", method: :patch %>
+<% end %>

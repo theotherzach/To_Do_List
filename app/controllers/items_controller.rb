@@ -9,23 +9,19 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
-  def edit
-    @item = Item.find_by(params[:id])
+  def update
+    item = current_user.items.find_by(params[:id])
+    item.update(date: params[:item][:date], body: params[:item][:body])
+    redirect_to items_path
   end
 
-  def update
-    @item = Item.find_by(params[:id])
-    @item.update(params[:date, :body])
-    redirect_to root_path
+  def edit
+    @item = current_user.items.find_by(params[:id])
   end
 
   def destroy
-    @item = Item.find_by(params[:id])
-    @item.destroy
-    redirect_to root_path
-  end
-
-  def show
-    @item = Item.find_by(params[:id])
+    item = current_user.items.find_by_id(params[:id])
+    item.destroy
+    redirect_to items_path
   end
 end
