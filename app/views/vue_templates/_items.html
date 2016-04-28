@@ -1,5 +1,10 @@
 <script id="items-template" type="text/template">
   <div>
-    I'm the items template
+    <form>
+      <input type="text" placeholder="Task" v-model="newItem.body">
+      <input type="date" v-model="newItem.date">
+    </form>
+
+    <!-- TODO: Render the list of items -->
   </div>
 </script>
