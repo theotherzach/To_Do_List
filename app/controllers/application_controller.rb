@@ -8,6 +8,17 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def create_user_if_logged_out
+    return if signed_in?
+
+    user = User.first_or_create({
+      name: Faker::Hacker.verb + "er",
+      uid: SecureRandom.uuid
+    })
+    session[:user_id] = user.id
+    redirect_to items_path
+  end
+
   helper_method :current_user
   def current_user
     if session[:user_id]

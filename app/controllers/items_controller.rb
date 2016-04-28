@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  before_action :create_user_if_logged_out
+
   def index
     @item = Item.new
     @items = current_user.items
@@ -24,4 +27,5 @@ class ItemsController < ApplicationController
     item.destroy
     redirect_to items_path
   end
+
 end

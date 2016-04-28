@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   delete '/items/:id',    to: 'items#destroy'
   get '/items/:id',       to: 'items#show',    as: 'item'
 
+  namespace :api do
+    resources :items
+  end
+
 end
