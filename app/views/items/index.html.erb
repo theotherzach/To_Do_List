@@ -1,4 +1,7 @@
 <h3>Add an Item to your To Do list</h3>
+<vue-items></vue-items>
+<%= render partial: "vue_templates/items" %>
+
 <%= form_for(@item) do |f| %>
   <%= f.label :date %>
   <%= f.date_field :date %>
@@ -16,3 +19,4 @@
   <%= link_to "Delete", item_path(item), method: :delete  %>
 </div>
 <% end %>
+
