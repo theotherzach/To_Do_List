@@ -9,8 +9,10 @@
 
 <h3>Your To Do List</h3>
 <% @items.each do |item| %>
+<div>
   <%= item.date %>
   <%= item.body %>
   <%= link_to "Edit", edit_item_path(item) %>
   <%= link_to "Delete", item_path(item), method: :delete  %>
+</div>
 <% end %>
