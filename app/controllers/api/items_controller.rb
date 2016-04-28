@@ -22,9 +22,9 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
+    @item = Item.new(item_params)
 
-    if item.save
+    if @item.save
       render json: @item
     else
       render json: @item.errors, status: :unprocessable_entity
@@ -40,7 +40,9 @@ class Api::ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :email, :biography)
+    result = params.require(:item).permit(:body, :date)
+    result[:user_id] = current_user.id
+    result
   end
 
   def assign_item
